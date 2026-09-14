@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinhação</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="jogo">
+  <h1 class="titulo">Jogo de Adivinhação</h1>
+  <p class="subtitulo">Tente descobrir o número secreto!</p>
+
+  <!-- Bola com o número secreto -->
+  <div class="bola"
+       th:text="${numeroSecreto != null ? numeroSecreto : '?'}">
+    ?
+  </div>
+
+  <form action="/tentar" method="post">
+
+    <input
+            class="campo"
+            type="number"
+            name="numero"
+            placeholder="Digite um número"
+    >
+
+    <button class="botao" type="submit">
+      Tentar
+    </button>
+
+  </form>
+  <!-- Área de mensagens -->
+  <p class="mensagem"
+     th:text="${mensagem != null ? mensagem : 'Boa sorte!'}">
+    Boa sorte!
+  </p>
+
+  <!-- Contador -->
+  <p class="tentativas">Tentativas: 0</p>
+
+  <!-- Botão secundário -->
+  <form action="/reiniciar" method="post">
+    <button class="botao botao-secundario" type="submit">
+      Jogar novamente
+    </button>
+  </form>
+</main>
+
+</body>
+</html>
